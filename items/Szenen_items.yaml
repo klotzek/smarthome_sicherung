@@ -1,0 +1,69 @@
+%YAML 1.1
+---
+Szene_Heizung:
+    type: scene
+    visu_acl: 'true'
+Szene_Durchgang:
+    type: scene
+    visu_acl: 'true'
+    enforce_updates: 'true'
+    eval: sh.EG.Essen.Szene_Durchgang_Schalten()
+    eval_trigger: EG.Essen.Szene_Durchgang_Schalten
+Szene_Klapplaeden:
+    type: scene
+    visu_acl: 'true'
+    enforce_updates: 'true'
+Szene_alle_Dusch_Lichter:
+    type: scene
+    visu_acl: 'true'
+    enforce_updates: 'true'
+    eval: sh.EG.Duschen.Szene_schalten()
+    eval_trigger: EG.Duschen.Szene_schalten
+Szene_alle_Lichter_aus:
+    type: scene
+    visu_acl: 'true'
+    enforce_updates: 'true'
+    eval: sh.EG.Schlafen.Szene_alle_Lichter_aus_schalten()
+    eval_trigger: EG.Schlafen.Szene_alle_Lichter_aus_schalten
+Szene_Essen:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: 'true'
+    eval: sh.EG.Wohnen.Szene_Essen_schalten()
+    eval_trigger: EG.Wohnen.Szene_Essen_schalten
+Szene_TV:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: 'true'
+    eval: sh.EG.Wohnen.Szene_TV_schalten()
+    eval_trigger: EG.Wohnen.Szene_TV_schalten
+Szenen_nach_Szenennummer:
+    type: scene
+    enforce_updates: 'true'
+    visu_acl: rw
+    knx_dpt: 5
+Szene_Aufstehen:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: rw
+    knx_dpt: 1
+Szene_Fernsehen:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: rw
+    knx_dpt: 1
+Szene_Schlafen:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: rw
+    knx_dpt: 1
+Szene_Ankommen:
+    type: scene
+    visu_acl: 'true'
+    enforce_updates: 'true'
+    eval: sh.EG.Wohnen.Szene_Ankommen_schalten()
+    eval_trigger: EG.Wohnen.Szene_Ankommen_schalten
+Szene_Party:
+    type: scene
+    enforce_updates: 'True'
+    visu_acl: rw

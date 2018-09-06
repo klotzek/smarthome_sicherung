@@ -1,0 +1,230 @@
+%YAML 1.1
+---
+eta_unit:
+    kessel:
+        status:
+            eta_pu_uri: 40/10021/0/0/12000
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+            n:
+                visu_acl: ro
+                type: num
+                eta_pu_type: calc
+        abgas_temp:
+            eta_pu_uri: 40/10021/0/0/12162
+            n:
+                visu_acl: ro
+                eta_pu_type: calc
+                type: num
+                sqlite: init
+            graph:
+                visu_acl: ro
+                eta_pu_type: calc
+                type: num
+                rrd: init
+        druck:
+            eta_pu_uri: 40/10021/0/0/12180
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        volllast:
+            eta_pu_uri: 40/10021/0/0/12153
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        gesamtverbrauch:
+            eta_pu_uri: 40/10021/0/0/12016
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        verbrauch_wartung:
+            eta_pu_uri: 40/10021/0/0/12014
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        beh_inhalt:
+            eta_pu_uri: 40/10021/0/0/12011
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        verbrauch_entaschung:
+            eta_pu_uri: 40/10021/0/0/12012
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        verbrauch_aschebox:
+            eta_pu_uri: 40/10021/0/0/12013
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        vorlauf:
+            eta_pu_uri: 40/10021/0/11152/2121
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    heizkreis:
+        status:
+            eta_pu_uri: 120/10101/12113/0/1109
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        vorlauf:
+            eta_pu_uri: 120/10101/0/0/12241
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        heizkurve:
+            eta_pu_uri: 120/10101/0/0/12241
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        schieber:
+            eta_pu_uri: 120/10101/0/0/12240
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        vorlauf_m10:
+            eta_pu_uri: 120/10101/0/0/12104
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        vorlauf_10:
+            eta_pu_uri: 120/10101/0/0/12103
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        absenkung:
+            eta_pu_uri: 120/10101/0/0/12107
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        grenze_tag:
+            eta_pu_uri: 120/10101/0/0/12096
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        grenze_nacht:
+            eta_pu_uri: 120/10101/0/0/12097
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    lager:
+        austragung:
+            eta_pu_uri: 40/10201/0/0/12058
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        vorrat:
+            eta_pu_uri: 40/10201/0/0/12015
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    abgas:
+        geblaese:
+            eta_pu_uri: 40/10021/0/0/12165
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        restsauerstoff:
+            eta_pu_uri: 40/10021/0/0/12164
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        entaschung:
+            eta_pu_uri: 40/10021/0/0/12050
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        beginn_ruhezeit:
+            eta_pu_uri: 40/10021/0/0/12248
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        dauer_ruhezeit:
+            eta_pu_uri: 40/10021/0/0/12249
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        aschebox_leeren_nach:
+            eta_pu_uri: 40/10021/0/0/12120
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    sys:
+        aussentemp:
+            eta_pu_uri: 40/10241/0/0/12197
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    WW:
+        schaltzustand:
+            eta_pu_uri: 120/10111/12130/0/1109
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        temperatur:
+            eta_pu_uri: 120/10111/12130/0/1110
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        einschalt_differenz:
+            eta_pu_uri: 120/10111/0/0/12133
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        WW_Speicher_Soll:
+            eta_pu_uri: 120/10111/0/0/12132
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        warmwasserspeicher:
+            eta_pu_uri: 120/10111/0/0/12271
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+    HK2:
+        schaltzustand:
+            eta_pu_uri: 120/10101/12113/0/1109
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue
+        temperatur:
+            eta_pu_uri: 120/10101/12113/0/1110
+            t:
+                visu_acl: ro
+                type: str
+                eta_pu_type: strValue

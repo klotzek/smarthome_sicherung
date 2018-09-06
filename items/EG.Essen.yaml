@@ -1,0 +1,180 @@
+%YAML 1.1
+---
+EG:
+    Essen:
+        Fenster_Spuele:
+            value: 0
+            type: bool
+            knx_dpt: 1
+            knx_cache: 5/1/5
+        Fenster_Kamin:
+            value: 0
+            type: bool
+            knx_dpt: 1
+            knx_cache: 5/1/4
+        Szene_Durchgang_Schalten:
+            type: bool
+            enforce_updates: 'true'
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/4
+            knx_cache: 1/0/4
+        Spuele:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/10
+                knx_cache: 1/2/10
+                nw: true
+        Kueche:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/9
+                knx_cache: 1/2/9
+        Kamin:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/11
+                knx_cache: 1/2/11
+        Durchgang:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/12
+                knx_cache: 1/2/12
+        Tresen:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/3
+                knx_cache: 1/2/3
+            Dimmen:
+                type: num
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_send: 1/4/3
+                knx_cache: 1/5/3
+        Esstisch:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/5
+                knx_cache: 1/2/5
+                nw: true
+            Dimmen:
+                type: num
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_send: 1/4/5
+                knx_cache: 1/5/5
+                nw: true
+        Linie_Kueche:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/2
+                knx_cache: 2/2/2
+        Linie_Esstisch:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/6
+                knx_cache: 2/2/6
+        Linie_Herd:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/7
+                knx_cache: 2/2/7
+        Laden1:
+            Bewegen:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/4
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Essen.Laden1.Bewegen
+                cache: 'true'
+        Laden2: #der an der Spuele
+            Bewegen:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/5
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Essen.Laden2.Bewegen
+                cache: 'true'
+        Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_init: 3/1/2
+                enforce_updates: 'true'
+                sqlite: init
+                sp: ro
+            soll:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/2/2
+                knx_init: 3/6/2
+                enforce_updates: 'yes'
+                sqlite: init
+            status:
+                type: num
+                visu_acl: ro
+                eval: 0 if value == 0 else 1
+                eval_trigger: EG.Essen.Heizung.stellwert
+                sqlite: init
+            sollwertverschiebung:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/2
+            stellwert:
+                type: num
+                visu_acl: ro
+                knx_dpt: 5001
+                knx_cache: 3/4/2
+                sqlite: init
+            modus:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/24
+                knx_cache: 3/5/24
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Essen.Heizung.modus

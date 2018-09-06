@@ -1,0 +1,72 @@
+%YAML 1.1
+---
+EG:
+    Ankommen:
+        Licht:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/17
+                knx_cache: 1/2/17
+        Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_init: 3/1/1
+                sqlite: init
+            soll:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/2/1
+                knx_init: 3/6/1
+                enforce_updates: 'yes'
+                sqlite: init
+            status:
+                type: num
+                visu_acl: ro
+                eval: 0 if value == 0 else 1
+                eval_trigger: EG.Ankommen.Heizung.stellwert
+                sqlite: init
+            sollwertverschiebung:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/1
+            stellwert:
+                type: num
+                visu_acl: ro
+                knx_dpt: 5001
+                knx_cache: 3/4/1
+                sqlite: init
+            modus:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/14
+                knx_cache: 3/5/14
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Ankommen.Heizung.modus
+            komfort:
+                type: bool
+                knx_dpt: 1
+            nacht:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/12
+            frostschutz:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/13
+            frostalarm:
+                type: bool
+                knx_dpt: 1
+            heizen:
+                type: bool
+                knx_dpt: 1

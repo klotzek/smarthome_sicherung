@@ -1,0 +1,200 @@
+%YAML 1.1
+---
+EG:
+    Wohnen:
+        name: Wohnen
+        sv_page: room
+        sv_img: scene_livingroom.png
+        Fenster_Strasse:
+            value: 0
+            type: bool
+            knx_dpt: 1
+            knx_cache: 5/1/2
+        Fenster_Berthold:
+            value: 0
+            type: bool
+            knx_dpt: 1
+            knx_cache: 5/1/3
+        Szene_TV_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/2
+            knx_cache: 1/0/2
+            enforce_updates: 'true'
+            nw: true
+        Szene_Essen_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/3
+            knx_cache: 1/0/3
+            enforce_updates: 'true'
+            nw: true
+        Szene_Ankommen_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/3
+            knx_cache: 1/0/3
+            enforce_updates: 'true'
+            nw: true
+        Szene_Party_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/3
+            knx_cache: 1/0/3
+            enforce_updates: 'true'
+            nw: true
+        Sofa1:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/1
+                knx_cache: 1/2/1
+            Dimmen:
+                type: num
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_send: 1/4/1
+                knx_cache: 1/5/1
+        Sofa2:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/2
+                knx_cache: 1/2/2
+            Dimmen:
+                type: num
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_send: 1/4/2
+                knx_cache: 1/5/2
+        Multimedia:
+            Schalten:
+                type: bool
+                enforce_updates: 'True'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/4
+                knx_cache: 1/2/4
+            Dimmen:
+                type: num
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_send: 1/4/4
+                knx_cache: 1/5/4
+                enforce_updates: 'true'
+        Linie1:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/0
+                knx_cache: 2/2/0
+        Linie2:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/1
+                knx_cache: 2/2/1
+        Laden1:
+            Bewegen:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/2
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Wohnen.Laden1.Bewegen
+                cache: 'true'
+        Laden2:
+            Bewegen:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/3
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Wohnen.Laden2.Bewegen
+                cache: 'true'
+        Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_init: 3/1/0
+                sqlite: init
+                sp: ro
+            soll:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/2/0
+                knx_init: 3/6/0
+                enforce_updates: 'yes'
+                sqlite: init
+            status:
+                type: num
+                visu_acl: ro
+                eval: 0 if value == 0 else 1
+                eval_trigger: EG.Wohnen.Heizung.stellwert
+                sqlite: init
+            sollwertverschiebung:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/0
+            stellwert:
+                type: num
+                visu_acl: ro
+                knx_dpt: 5001
+                knx_cache: 3/4/0
+                sqlite: init
+            modus:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/4
+                knx_cache: 3/5/4
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Wohnen.Heizung.modus
+            komfort:
+                type: bool
+                knx_dpt: 1
+                visu_acl: rw
+                knx_send: 3/5/1
+                enforce_updates: 'true'
+            nacht:
+                type: bool
+                knx_dpt: 1
+                visu_acl: rw
+                knx_send: 3/5/2
+                enforce_updates: 'true'
+            frostschutz:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/3
+            frostalarm:
+                type: bool
+                knx_dpt: 1
+            heizen:
+                type: bool
+                knx_dpt: 1

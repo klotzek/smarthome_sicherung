@@ -1,0 +1,222 @@
+%YAML 1.1
+---
+EG:
+    Duschen:
+        Szene_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/0
+            knx_cache: 1/0/0
+            enforce_updates: 'true'
+            nw: true
+        Licht:
+            Melder_Sperren:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/7/0
+                knx_cache: 1/7/0
+                enforce_updates: 'true'
+            uzsu_Bewegungsmelder:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Duschen.Licht.Melder_Sperren
+            Status_alle_Lampen:
+                type: bool
+                knx_dpt: 1
+                knx_send: 1/2/23
+                knx_cache: 1/2/23
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/15
+                knx_cache: 1/2/15
+                enforce_updates: 'true'
+            Sperren:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/7/19
+                knx_cache: 1/7/19
+                enforce_updates: 'yes'
+                crontab:
+                  - 30 23 * * = 1
+                  - 55 5 * * = 0
+        Duschlichtlein:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/19
+                knx_cache: 1/2/19
+                enforce_updates: 'true'
+                nw: true
+            Sperren:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/7/20
+                knx_cache: 1/7/20
+                enforce_updates: 'yes'
+            uzsu_Duschlichtlein:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Duschen.Duschlichtlein.Sperren
+        Fakefenster:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/13
+                knx_cache: 1/2/13
+                enforce_updates: 'true'
+        Waschtisch:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/14
+                knx_cache: 1/2/14
+                enforce_updates: 'true'
+        Linie_Waschtisch:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/5
+                knx_cache: 2/2/5
+        Linie_Waschmaschine:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/3
+                knx_cache: 2/2/3
+        Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_init: 3/1/3
+                sqlite: init
+            soll:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/2/3
+                knx_init: 3/6/3
+                sqlite: init
+            soll_hhalter:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_init: 3/6/6
+                sqlite: init
+            status:
+                type: bool
+                eval: 0 if value == 0 else 1
+                eval_trigger: EG.Duschen.Heizung.stellwert
+                sqlite: init
+            sollwertverschiebung:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/3
+            sollwertverschiebung_hhalter:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/6
+            stellwert:
+                type: num
+                knx_dpt: 5001
+                knx_cache: 3/4/3
+                sqlite: init
+            stellwert_hhalter_proz:
+                type: num
+                knx_dpt: 5001
+                eval: 0 if value == 0 else 100
+                eval_trigger: EG.Duschen.Heizung.stellwert_hhalter
+                sqlite: init
+            stellwert_hhalter:
+                type: num
+                visu_acl: rw
+                knx_dpt: 5001
+                knx_cache: 3/4/6
+                sqlite: init
+            stellwert_vorgabe_RTR_Bad:
+                type: bool
+                knx_dpt: 1
+                knx_cache: 3/7/6
+            boost_hhalter:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 3/7/7
+                knx_cache: 3/7/7
+            zwang_hhalter:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 3/7/7
+                knx_cache: 3/7/7
+            modus:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/34
+                knx_cache: 3/5/34
+                enforce_updates: 'true'
+            modus_hhalter:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/64
+                knx_cache: 3/5/64
+                enforce_updates: 'true'
+            komfort:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/31
+            nacht:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/32
+            frostschutz:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/33
+            frostalarm:
+                type: bool
+                knx_dpt: 1
+            heizen:
+                type: bool
+                knx_dpt: 1
+            zwang_ein:
+                type: bool
+                knx_dpt: 1
+                value: 0
+            zwang_aus:
+                type: bool
+                value: 0
+            uzsu:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Duschen.Heizung.modus
+            uzsu_hhalter:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Duschen.Heizung.modus_hhalter
+            uzsu_hhalter_zwang:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Duschen.Heizung.zwang_hhalter

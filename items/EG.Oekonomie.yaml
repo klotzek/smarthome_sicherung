@@ -1,0 +1,143 @@
+%YAML 1.1
+---
+EG:
+    Oekonomie:
+        Temp_Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_cache: 3/1/5
+                sqlite: init
+            soll:
+                type: num
+                value: 5
+                visu_acl: ro
+                knx_dpt: 9
+                sqlite: init
+            status:
+                type: num
+                value: 0
+                visu_acl: ro
+                sqlite: init
+        Frostalarm:
+            type: bool
+            visu_acl: ro
+            knx_dpt: 1
+            knx_cache: 5/4/0
+            text:
+                type: str
+                visu_acl: ro
+                value: Warnung
+        Licht_Heizung:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/18
+                knx_cache: 1/2/18
+        Licht_Scheune:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/20
+                knx_cache: 1/2/20
+        Sprachbeleuchtung:
+            Schalten:
+                type: bool
+                sp: rw
+                knx_dpt: 1
+                knx_send: 1/1/21
+                knx_cache: 1/2/21
+        Licht_Aussen:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/21
+                knx_cache: 1/2/21
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Oekonomie.Licht_Aussen.Schalten
+                cache: 'true'
+        Licht_Sprechanlage:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/22
+                knx_cache: 1/2/22
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Oekonomie.Licht_Sprechanlage.Schalten
+                cache: 'true'
+        Toralarm:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 5/4/1
+            text:
+                type: str
+                visu_acl: ro
+                value: Warnung
+        Scheunentor:
+            Bewegen:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/0
+                autotimer: 1 = 0
+            Tor_Status:
+                type: bool
+                visu_acl: ro
+                knx_dpt: 1
+                knx_cache: 5/5/5
+            Automatik:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_cache: 4/3/0
+                knx_send: 4/3/0
+            Sperre:
+                type: bool
+                visu_acl: ro
+                value: 0
+        Einfahrtstor:
+            Bewegen:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/6
+                autotimer: 1 = 0
+            Tor_Status:
+                type: bool
+                visu_acl: ro
+                knx_dpt: 1
+                knx_cache: 5/5/8
+            Automatik:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_cache: 4/3/1
+                knx_send: 4/3/1
+            Sperre:
+                type: bool
+                visu_acl: ro
+                value: 0
+        Scheunentor_Zirell:
+            Tor_Status:
+                type: bool
+                visu_acl: ro
+                knx_dpt: 1
+                knx_cache: 5/5/6
+        Scheunentor_Berthold:
+            Tor_Status:
+                type: bool
+                visu_acl: ro
+                knx_dpt: 1
+                knx_cache: 5/5/7

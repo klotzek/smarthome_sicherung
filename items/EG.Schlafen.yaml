@@ -1,0 +1,157 @@
+%YAML 1.1
+---
+EG:
+    Schlafen:
+        Szene_Fernsehen_schalten:
+            type: bool
+        Szene_Aufstehen_schalten:
+            type: bool
+        Szene_alle_Lichter_aus_schalten:
+            type: bool
+            visu_acl: rw
+            knx_dpt: 1
+            knx_send: 1/0/1
+            knx_cache: 1/0/1
+            enforce_updates: 'yes'
+            nw: true
+        Fenster_Strasse:
+            value: 0
+            type: bool
+            knx_dpt: 1
+            knx_cache: 5/1/1
+        Laden1:
+            Bewegen:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/1
+                enforce_updates: 'true'
+            uzsu:
+                type: dict
+                visu_acl: rw
+                uzsu_item: EG.Schlafen.Laden1.Bewegen
+                cache: 'true'
+            Close:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 4/1/1
+                enforce_updates: 'true'
+        Licht_Melike:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/7
+                knx_cache: 1/2/7
+                enforce_updates: 'yes'
+            Dimmen:
+                type: num
+                visu_acl: rw
+                knx_dpt: 5
+                knx_send: 1/4/7
+                knx_cache: 1/5/7
+                enforce_updates: 'yes'
+        Licht_Juergen:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/8
+                knx_cache: 1/2/8
+            Dimmen:
+                type: num
+                visu_acl: rw
+                knx_dpt: 5
+                knx_send: 1/4/8
+                knx_cache: 1/5/8
+        Licht:
+            Schalten:
+                type: bool
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 1/1/6
+                knx_cache: 1/2/6
+                nw: true
+            Dimmen:
+                type: num
+                visu_acl: rw
+                knx_dpt: 5
+                knx_send: 1/4/6
+                knx_cache: 1/5/6
+                nw: true
+            uzsu:
+                type: dict
+                uzsu_item: EG.Schlafen.Licht.Schalten
+                cache: 'true'
+                visu_acl: rw
+        Linie_Schlafzimmer:
+            Schalten:
+                type: bool
+                enforce_updates: 'true'
+                visu_acl: rw
+                knx_dpt: 1
+                knx_send: 2/1/4
+                knx_cache: 2/2/4
+        Heizung:
+            ist:
+                type: num
+                visu_acl: ro
+                knx_dpt: 9
+                knx_init: 3/1/4
+                sqlite: init
+            soll:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/2/4
+                knx_init: 3/6/4
+                sqlite: init
+                enforce_updates: 'yes'
+            status:
+                type: bool
+                visu_acl: ro
+                sqlite: init
+                eval: 0 if value == 0 else 1
+                eval_trigger: EG.Schlafen.Heizung.stellwert
+            stellwert:
+                type: num
+                knx_dpt: 5001
+                knx_init: 3/4/4
+                sqlite: init
+            sollwertverschiebung:
+                type: num
+                visu_acl: rw
+                knx_dpt: 9
+                knx_send: 3/3/4
+                knx_cache: 3/3/4
+            modus:
+                type: num
+                visu_acl: rw
+                knx_dpt: 20
+                knx_send: 3/5/44
+                knx_cache: 3/5/44
+                enforce_updates: 'true'
+            komfort:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/41
+            nacht:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/42
+            frostschutz:
+                type: bool
+                knx_dpt: 1
+                knx_send: 3/5/43
+            frostalarm:
+                knx_dpt: 1
+                type: bool
+            heizen:
+                type: bool
+                knx_dpt: 1
+            uzsu:
+                type: dict
+                visu_acl: rw
+                cache: 'true'
+                uzsu_item: EG.Schlafen.Heizung.modus

@@ -1,0 +1,103 @@
+%YAML 1.1
+---
+
+system:
+
+    datum_uhrzeit:
+
+        sonne:
+
+            # [[[[berechnung]]]]
+            # type = bool
+            # enforce_updates = true
+            # crontab = init | 1 0 * *
+            auf:
+                type: foo
+                enforce_updates: 'true'
+
+            aufgang:
+                type: foo
+                eval: value.astimezone(sh.tzinfo()).strftime("%H:%M")
+                # eval = sh.sun.rise().astimezone(sh.tzinfo()).strftime(\"%H:%M\")
+                # eval_trigger = system.datum_uhrzeit.sonne.berechnung()
+                # eval_trigger=sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            unter:
+                type: foo
+                enforce_updates: 'true'
+
+            untergang:
+                type: foo
+                eval: value.astimezone(sh.tzinfo()).strftime("%H:%M")
+                # eval = sh.sun.set().astimezone(sh.tzinfo()).strftime(\"%H:%M\")
+                # eval_trigger = system.datum_uhrzeit.sonne.berechnung()
+                # eval_trigger=sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            position:
+                type: foo
+                # eval = sh.sun.pos()
+                # eval_trigger = system.datum_uhrzeit.sonne.berechnung()
+                # eval_trigger=sh.env.location.day
+                enforce_updates: 'true'
+
+        # crontab = init | 1 0 * *
+        mond:
+
+            # [[[[berechnung]]]]
+            # type = bool
+            # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+            # enforce_updates = true
+            # crontab = init | 1 0 * *
+            auf:
+                type: foo
+                enforce_updates: 'true'
+
+            aufgang:
+                type: foo
+                eval: value.astimezone(sh.tzinfo()).strftime("%H:%M")
+                # eval = sh.moon.rise().astimezone(sh.tzinfo()).strftime(\"%H:%M\")
+                # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+                # eval_trigger=sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            unter:
+                type: foo
+                enforce_updates: 'true'
+
+            untergang:
+                type: foo
+                eval: value.astimezone(sh.tzinfo()).strftime("%H:%M")
+                # eval = sh.moon.set().astimezone(sh.tzinfo()).strftime(\"%H:%M\")
+                # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+                # eval_trigger=sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            position:
+                type: foo
+                eval: sh.moon.pos()
+                # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+                eval_trigger: sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            licht:
+                type: num
+                eval: sh.moon.light()
+                # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+                eval_trigger: sh.env.location.day
+                enforce_updates: 'true'
+
+            # crontab = init | 1 0 * *
+            phase:
+                type: num
+                eval: sh.moon.phase()
+                # eval_trigger = system.datum_uhrzeit.mond.berechnung()
+                eval_trigger: sh.env.location.day
+                enforce_updates: 'true'
+                # crontab = init | 1 0 * *

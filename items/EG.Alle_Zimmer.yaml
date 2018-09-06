@@ -1,0 +1,11 @@
+%YAML 1.1
+---
+EG:
+    Alle_Zimmer:
+        Szene_alle_Lichter_aus:
+            type: scene
+            visu_acl: rw
+            sp: rw
+            enforce_updates: true
+            knx_dpt: 1
+            knx_send: 1/0/1
