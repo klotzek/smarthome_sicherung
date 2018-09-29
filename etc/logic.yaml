@@ -1,0 +1,5 @@
+%YAML 1.1
+---
+Handtuchhalter_boost:
+    filename: HHalter.py
+    watch_item: EG.Duschen.Heizung.boost_hhalter

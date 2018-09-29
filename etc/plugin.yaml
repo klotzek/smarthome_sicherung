@@ -1,0 +1,128 @@
+# plugin.yaml
+
+# Der BackendServer stellt eine Übersicht zur Laufzeit dar und liefert Informationen ähnlich wie das CLI Plugin
+# Der Zugriff erfolgt über http://<IP oder Name des SmartHomeNG Servers bzw. ip>:<port>
+# port wird als Attribut weiter unten definiert
+# das Passwort ist zunächst im Klartext anzugeben. In neueren Versionen wird es eine Funktion im Backend geben,
+# die aus einem gegebenen Passwort einen Hash erzeugt. Wenn user oder password fehlen gibt es keine Abfrage
+BackendServer:
+    class_name: BackendServer
+    class_path: plugins.backend
+    # ip: xxx.xxx.xxx.xxx
+    port: 8383
+    updates_allowed: 'True'
+    threads: 8
+    user: admin
+    password: admin
+    language: de
+
+# KNX Verbindung via knxd
+knx:
+    class_name: KNX
+    class_path: plugins.knx
+    host: 127.0.0.1
+    port: 6720
+    # send_time: 600 # update date/time every 600 seconds, default none
+    # time_ga: 1/1/1 # default none
+    # date_ga: 1/1/2 # default none
+
+# Bereitstellung eines Websockets zur Kommunikation zwischen SmartVISU und SmartHomeNG
+visu:
+    class_name: WebSocket
+    class_path: plugins.visu_websocket
+    # ip: 0.0.0.0
+    # port: 2424
+    # tls: no
+    wsproto: 4
+    acl: rw
+
+# Autogenerierung von Webseiten für SmartVISU
+smartvisu:
+    class_name: SmartVisu
+    class_path: plugins.visu_smartvisu
+    # '"neue" Linux Versionen (z.B. Debian > 8.x, Ubuntu > 14.x)'
+    smartvisu_dir: /var/www/html/smartVISU
+
+    # nur \"alte\" Linux-Variationen
+    # smartvisu_dir: /var/www/smartVISU
+    # generate_pages: True
+    # handle_widgets: True
+    # overwrite_templates: Yes
+    # visu_style: blk
+
+# Command Line Interface
+# wichtig für Funktionsprüfungen solange keine Visu zur Verfügung steht
+cli:
+    class_name: CLI
+    class_path: plugins.cli
+#     ip: 0.0.0.0
+    update: 'True'
+
+# alter SQL-Treiber
+# [sql]
+# class_name: SQL
+# class_path: plugins.sqlite
+# SQL-Treiber, unterstützt auch die SmartVISU 2.8/2.9
+# dazu muß im websocket plugin zwingend die Protokollversion 4 eingetragen sein
+
+sql:
+    class_name: SQL
+    class_path: plugins.sqlite_visu2_8
+
+# Onewire Plugin
+# [ow]
+# class_name: OneWire
+# class_path: plugins.onewire
+
+uzsu:
+    class_name: UZSU
+    class_path: plugins.uzsu
+
+eta_pu:
+    class_name: ETA_PU
+    class_path: plugins.eta_pu
+    address: 192.168.1.4
+    port: 8080
+    setpath: '/user/vars'
+    setname: 'smarthome' 
+
+# fb1:
+#     class_name: AVM
+#     class_path: plugins.avm
+# #    username: ...    # optional
+#     password: 'DidHvN13'
+#     host: fritz.box
+#     port: 49443
+#     cycle: 300
+#     ssl: True    # use https or not
+#     verify: False    # verify ssl certificate
+#     call_monitor: 'True'
+# #    call_monitor_incoming_filter: "...    ## optional, don't set if you don't want to watch only one specific number with your call monitor"
+#     instance: fritzbox_7490
+
+Sonos:
+    class_name: Sonos
+    class_path: plugins.sonos
+    # tts: true                          # optional, default:  false
+    # local_webservice_path: /tmp/tts    # optional, default:  empty. If 'tts' is enabled, this option is mandatory. 
+                                         # All tts files will be stored here.
+    # webservice_ip: 192.168.1.40        # optional, default:  automatic. You can set a specific ip address.
+                                         # If you're using a docker container, you have to set the host 
+                                         # ip address here.  
+    # webservice_port: 23500             # optional, default:  23500
+    discover_cycle: 120                # optional, default:  120 (in seconds)
+    # speaker_ips:                       # optional. You can set static IP addresses for your Sonos speaker. This
+    #   - 192.168.1.10                   # will disable auto-discovery. This is useful if you're using a 
+    #   - 192.168.1.77                   # containerized environment with restricted network access.
+
+nw:
+    class_name: Network
+    class_path: plugins.network
+    # ip: 0.0.0.0
+    # port: 2727
+    tcp: 'yes'
+#     tcp_acl:
+#       - 127.0.0.1
+#       - 192.168.0.34
+    udp: 'yes'
+    # udp_acl: '*'
